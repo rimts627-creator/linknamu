@@ -3,17 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --background: #f5f5f4;
-  --foreground: #171717;
+  --foreground: #1e2330;
+  --muted: #646c7f;
+  /* 서리 낀 흰색 → 연한 하늘색 → 옅은 라벤더 그라데이션 */
+  --bg-from: #f7f9fc;
+  --bg-via: #e8f0fa;
+  --bg-to: #dcdcf6;
+  /* 글래스 카드가 비쳐 보이도록 은은하게 깔아 두는 빛 번짐 */
+  --glow-1: rgba(160, 196, 240, 0.5);
+  --glow-2: rgba(200, 190, 245, 0.55);
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #e8ecf5;
+  --muted: #9aa3b8;
+  --bg-from: #0f131c;
+  --bg-via: #141a26;
+  --bg-to: #1c1d33;
+  --glow-1: rgba(80, 120, 200, 0.22);
+  --glow-2: rgba(130, 110, 220, 0.12);
+}
+
+html {
+  background: var(--bg-from);
 }
 
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  background:
+    radial-gradient(60% 45% at 85% 8%, var(--glow-1), transparent 70%),
+    radial-gradient(55% 40% at 10% 95%, var(--glow-2), transparent 70%),
+    linear-gradient(165deg, var(--bg-from) 0%, var(--bg-via) 45%, var(--bg-to) 100%);
+  background-attachment: fixed;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
 }

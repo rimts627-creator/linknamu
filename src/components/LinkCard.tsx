@@ -34,17 +34,18 @@ export default function LinkCard({ link, initialCount }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-5 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-600 dark:border-neutral-800 dark:bg-neutral-900"
+      className="group flex items-center gap-3 rounded-[1.25rem] border border-white/70 bg-white/45 px-5 py-[1.125rem] shadow-[0_8px_28px_-12px_rgba(70,90,140,0.22),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-xl transition duration-300 ease-out hover:-translate-y-px hover:bg-white/60 hover:shadow-[0_12px_32px_-12px_rgba(70,90,140,0.3),inset_0_1px_0_rgba(255,255,255,0.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[0_8px_28px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.06)] dark:hover:bg-white/[0.1]"
     >
-      <span className="text-xl" aria-hidden>
+      <span className="w-12 text-xl leading-none" aria-hidden>
         {link.icon}
       </span>
-      <span className="flex-1 text-center font-medium">{link.title}</span>
-      {count !== null && (
-        <span className="min-w-[3rem] text-right text-xs tabular-nums text-neutral-500">
-          {count.toLocaleString()}회
-        </span>
-      )}
+      <span className="flex-1 text-center text-[0.9375rem] font-semibold tracking-tight">
+        {link.title}
+      </span>
+      {/* 아이콘 칸과 같은 폭을 둬서 제목이 항상 정가운데에 오도록 */}
+      <span className="w-12 text-right text-xs tabular-nums text-[var(--muted)] opacity-80">
+        {count !== null && `${count.toLocaleString()}회`}
+      </span>
     </a>
   );
 }

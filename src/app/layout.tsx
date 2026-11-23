@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// 한글용 Pretendard: 화면에 쓰인 글자 묶음만 내려받는 분할(dynamic subset) 버전
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "링크나무",
@@ -26,7 +21,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${geistSans.variable} antialiased`}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

@@ -11,9 +11,9 @@ export default async function Home() {
   const counts = await getClickCounts();
 
   return (
-    <main className="relative mx-auto min-h-screen w-full max-w-md px-4 pb-12 pt-16">
+    <main className="relative mx-auto min-h-screen w-full max-w-[26rem] px-6 pb-16 pt-24 sm:pt-28">
       {/* 다크모드 토글 */}
-      <div className="absolute right-4 top-4">
+      <div className="absolute right-5 top-5">
         <ThemeToggle />
       </div>
 
@@ -21,7 +21,7 @@ export default async function Home() {
       <ProfileHeader profile={profile} />
 
       {/* 하단: 링크 카드 목록 (세로 배치) */}
-      <ul className="mt-10 flex flex-col gap-4">
+      <ul className="mt-12 flex flex-col gap-4">
         {links.map((link) => (
           <li key={link.id}>
             <LinkCard link={link} initialCount={counts ? counts[link.id] ?? 0 : null} />
