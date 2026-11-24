@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import type { LinkItem } from "@/data/profile";
 
 type Props = {
   link: LinkItem;
-  initialCount: number | null;
+  count: number;
+  onClicked: (id: string) => void;
 };
 
-export default function LinkCard({ link, initialCount }: Props) {
-  const [count, setCount] = useState(initialCount);
-
+export default function LinkCard({ link, count, onClicked }: Props) {
   const handleClick = () => {
     // 페이지를 떠나도 요청이 전송되도록 sendBeacon 사용
     const body = JSON.stringify({ id: link.id });
@@ -25,7 +23,7 @@ export default function LinkCard({ link, initialCount }: Props) {
         keepalive: true,
       }).catch(() => {});
     }
-    setCount((c) => (c === null ? c : c + 1));
+    onClicked(link.id);
   };
 
   return (
@@ -44,7 +42,7 @@ export default function LinkCard({ link, initialCount }: Props) {
       </span>
       {/* 아이콘 칸과 같은 폭을 둬서 제목이 항상 정가운데에 오도록 */}
       <span className="w-12 text-right text-xs tabular-nums text-[var(--muted)] opacity-80">
-        {count !== null && `${count.toLocaleString()}회`}
+        {`${count.toLocaleString()}회`}
       </span>
     </a>
   );
